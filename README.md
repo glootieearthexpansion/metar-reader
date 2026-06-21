@@ -39,6 +39,15 @@ Weather data comes live from the [aviationweather.gov](https://aviationweather.g
 
 5. Open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser, enter a 4-letter ICAO airport code (e.g. `KJFK`, `KLAX`, `EGLL`), and click **Get Weather**.
 
+## Running tests
+
+```bash
+pip install -r requirements-dev.txt
+pytest
+```
+
+Tests cover the METAR decoder (`tests/test_metar_decoder.py`) and the Flask routes (`tests/test_app.py`, with the aviationweather.gov call mocked so they run offline).
+
 ## How it works
 
 - `app.py` — Flask routes. `/` serves the page; `/api/metar?code=XXXX` fetches the raw METAR text from aviationweather.gov and returns the decoded result as JSON.
