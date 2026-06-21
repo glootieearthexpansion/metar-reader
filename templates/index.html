@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>METAR Reader</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="card">
+    <h1>METAR Reader</h1>
+    <p class="subtitle">Type an airport code to get a plain-English weather report.</p>
+
+    <form id="metar-form" autocomplete="off">
+      <input
+        type="text"
+        id="code-input"
+        placeholder="e.g. KJFK"
+        maxlength="4"
+        aria-label="Airport code"
+      >
+      <button type="submit">Get Weather</button>
+    </form>
+
+    <div id="status" class="status" hidden></div>
+
+    <section id="result" class="result" hidden>
+      <div class="headline">
+        <span id="icon" class="icon"></span>
+        <div>
+          <h2 id="station-name"></h2>
+          <p id="summary"></p>
+        </div>
+      </div>
+
+      <table id="details-table"></table>
+
+      <details class="raw-details">
+        <summary>Raw METAR</summary>
+        <code id="raw-metar"></code>
+      </details>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
